@@ -23,7 +23,7 @@ class Movements(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.now,nullable=False)
 
     # RELACIONAMENTO
-    silo = db.relationship("Storage", back_poplates="movements")
+    silo = db.relationship("Storage", back_populates="movements")
 
     """Serializa pra JSON"""
     def to_dict(self):
@@ -37,7 +37,7 @@ class Movements(db.Model):
             'origin': self.origin,
             'destination': self.destination,
             'truck_plate': self.truck_plate,
-            'drive': self.drive,
+            'driver': self.driver,
             'responsible': self.responsible,
             'observations': self.observations,
             'timestamp': self.timestamp.isoformat()

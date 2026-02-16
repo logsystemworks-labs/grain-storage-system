@@ -8,6 +8,7 @@ from flask import abort
 """ Serviço com TODA lógica de negócio de movimentações """
 class MovementsService:
 
+    """Cria nova movimentação"""
     @staticmethod
     def create_movements(data):
 
@@ -67,7 +68,7 @@ class MovementsService:
     @staticmethod
     def _validate_input_data(data):
         # Campos obrigatórios
-        required_fields = ['silo_id', 'type', 'amount', 'product', 'responsible']
+        required_fields = ['silo_id', 'types', 'amount', 'product', 'responsible']
         for field in required_fields:
             if field not in data or not data[field]:
                 abort(400, description=f"Campo '{field}' é obrigatório")
@@ -109,6 +110,18 @@ class MovementsService:
                 f"não é possível retirar {amount}t"
             ))
 
+    """Lista movimentações com filtros"""
+    @staticmethod
+    def get_all_moves(silo_id=None, types=None, limit=50):
+        query = Movements.query
+
+        if silo_id:
+            query = query.filter_by(silo_id=silo_id)
+        if types:
+            query = query.filter_by(types=types.upper())
+        return query.order_by(Movements.timestamp.desc()).limit(limit).all()
+
+
     """Verifica e loga alertas"""
     @staticmethod
     def _check_alerts(silo):
@@ -143,7 +156,7 @@ class MovementsService:
                 "total_inputs": total_inputs,
                 "total_outputs": total_outputs,
                 "current_occupation": silo.current_occupation,
-                "percentage": silo.occupancy_percentage,
+                "percentage": silo.percentual_occupation,
                 "status": silo.status
             }
         }

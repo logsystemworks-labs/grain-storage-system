@@ -7,13 +7,10 @@ from flask import abort
 
 """ Regra de negócio para gerenciar Silos """
 class StorageService:
-    def __init__(self):
-        self.storage = Storage()
-
     """Registrar Silo"""
     @staticmethod
     def create_storage(data):
-        exist = Storage.query.filter(name=data['name']).first()
+        exist = Storage.query.filter_by(name=data['name']).first()
 
         # Valida se já existe
         if exist:

@@ -1,6 +1,5 @@
 from app.db.extensions import db
 
-
 """ Modelo para tabela no DB via Python """
 class Storage(db.Model):
     __tablename__='silos'
@@ -14,9 +13,7 @@ class Storage(db.Model):
     local_lng = db.Column(db.Float, nullable=False)
 
     # Relacionamento
-    movements = db.relationship("Movement", back_populates="silo", cascade="all, delete-orphan")
-
-
+    movements = db.relationship("Movements", back_populates="silo", cascade="all, delete-orphan")
 
     """ Calcula o percentual de capacidade atual do Silo """
     @property
@@ -26,14 +23,14 @@ class Storage(db.Model):
     """ Calcula espaço disponível """
     @property
     def available_capacity(self) -> float:
-        return self.storage.max_capacity - self.storage.current_occupation
+        return self.max_capacity - self.current_occupation
 
     """ Status do silo """
     @property
     def status(self) -> str:
-        if self.percent_occupation >= 90:
+        if self.percentual_occupation >= 90:
             return "CRÍTICO"
-        elif self.percent_occupation >= 70:
+        elif self.percentual_occupation >= 70:
             return "ATENÇÃO"
         else:
             return "OK"
