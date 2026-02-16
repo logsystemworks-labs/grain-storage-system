@@ -387,8 +387,8 @@ O agronegócio brasileiro é responsável por 25% do PIB, mas enfrenta desafios 
 Interessado em implementar este sistema na sua cooperativa?
 
 **Entre em contato:**
-- 📧 contato@logsystemworks.com
-- 💬 WhatsApp: [seu número]
+- 📧 logsystemworks@gmail.com
+- 💬 WhatsApp: (61) 9 9441-7522
 - 🔗 LinkedIn: [seu LinkedIn]
 
 ---
