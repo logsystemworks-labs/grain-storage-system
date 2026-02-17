@@ -6,6 +6,7 @@ class Movements(db.Model):
     __tablename__='movements'
 
     id = db.Column(db.Integer, primary_key=True)
+    tenant_id = db.Column(db.Integer, db.ForeignKey('tenants.id'), nullable=False)
     silo_id = db.Column(db.Integer,db.ForeignKey("silos.id"), nullable=False)       # FK
     types = db.Column(db.String(10), nullable=False)                                 # ENTRADA / SAIDA
     amount = db.Column(db.Float, nullable=False)                                    # Quantidade 30 (Toneladas)
@@ -43,3 +44,5 @@ class Movements(db.Model):
             'timestamp': self.timestamp.isoformat()
         }
 
+    def __repr__(self):
+        return f'<Movements {self.id} - {self.types} {self.amount}t>'

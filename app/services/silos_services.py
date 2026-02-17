@@ -9,8 +9,8 @@ from flask import abort
 class StorageService:
     """Registrar Silo"""
     @staticmethod
-    def create_storage(data):
-        exist = Storage.query.filter_by(name=data['name']).first()
+    def create_storage(data, tenant_id):
+        exist = Storage.query.filter_by(tenant_id=tenant_id, name=data['name']).first()
 
         # Valida se já existe
         if exist:
@@ -22,6 +22,7 @@ class StorageService:
 
         # Cria silo
         silo = Storage(
+            tenant_id=tenant_id,  # ← Adiciona tenant_id
             name=data['name'],
             max_capacity=data['max_capacity'],
             current_occupation=data.get('current_occupation', 0),
@@ -35,23 +36,23 @@ class StorageService:
 
         return silo
 
-    """Listar todos os silos"""
+    """Listar todos os silos de um tenant específico"""
     @staticmethod
-    def get_all_silos():
-        return Storage.query.all()
+    def get_all_silos(tenant_id):
+        return Storage.query.filter_by(tenant_id=tenant_id).all()
 
-    """Busca silo por ID"""
+    """Busca silo por ID (dentro do tenant)"""
     @staticmethod
-    def get_silo_by_id(silo_id):
-        silo = Storage.query.get(silo_id)
+    def get_silo_by_id(silo_id, tenant_id):
+        silo = Storage.query.filter_by(id=silo_id, tenant_id=tenant_id).first()
         if not silo:
             abort(404, descripion="Silo não encontrado")
         return silo
 
     """Atualiza dados do silo"""
     @staticmethod
-    def edit_silo(silo_id, data):
-        silo = StorageService.get_silo_by_id(silo_id)
+    def edit_silo(silo_id, data, tenant_id):
+        silo = StorageService.get_silo_by_id(silo_id, tenant_id)
 
         # Atualiza campos permitidos
         if 'name' in data:
@@ -69,8 +70,8 @@ class StorageService:
 
     """ Retorna resumo geral de todos os silos """
     @staticmethod
-    def dashboard():
-        silos = StorageService.get_all_silos()
+    def dashboard(tenant_id):
+        silos = StorageService.get_all_silos(tenant_id)
 
         if not silos:
             return {
@@ -94,9 +95,9 @@ class StorageService:
         return {
             'summary': {
                 'total_silos': len(silos),
-                'total_capacity': total_capacity,
-                'total_occupation': total_occupation,
-                'general_percentage': general_percentage,
+                'total_capacity': round(total_capacity, 2),
+                'total_occupation': round(total_occupation, 2),
+                'general_percentage': round(general_percentage, 2),
                 'critical_silos': critical_silos,
                 'ok_silos': ok_silos
             },

@@ -5,6 +5,7 @@ class Storage(db.Model):
     __tablename__='silos'
 
     id = db.Column(db.Integer, primary_key=True)
+    tenant_id = db.Column(db.Integer, db.ForeignKey('tenants.id'), nullable=False)  # ← ADICIONA
     name = db.Column(db.String(255), nullable=False)            # "Silo A - Milho"
     max_capacity = db.Column(db.Float, nullable=False)          # 250 (Toneladas)
     current_occupation = db.Column(db.Float, nullable=False)    # 230 (Toneladas)
@@ -51,3 +52,5 @@ class Storage(db.Model):
                 'lng': self.local_lng
             } if self.local_lat else None
         }
+    def __repr__(self):
+        return f'<Storage {self.name}>'
