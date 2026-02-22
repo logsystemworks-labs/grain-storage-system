@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="login-wrapper">
+
+      <!-- ════════════ LADO ESQUERDO ════════════ -->
+      <div class="left-panel">
+
+        <!-- Decorações -->
+        <div class="dots-pattern">
+          {% for i in range(25) %}<span></span>{% endfor %}
+        </div>
+        <div class="cross cross-1">+</div>
+        <div class="cross cross-2">+</div>
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+
+        <!-- Conteúdo central -->
+        <div class="left-content">
+          <div class="brand-icon">🌾</div>
+
+          <div class="brand-name">
+            Log <span>System</span>Works
+          </div>
+
+          <div class="brand-tagline">Gestão de Armazenagem</div>
+
+          <div class="divider-line"></div>
+
+          <div class="left-subtitle">
+            Do campo ao relatório,<br>
+            tudo sob <em>controle total.</em>
+          </div>
+
+          <p class="left-sub-desc">
+            Gerencie seus silos, monitore estoques e tome decisões
+            com inteligência — em qualquer lugar, a qualquer hora.
+          </p>
+        </div>
+
+        <!-- Badge de status -->
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          <span>Sistema operacional · 99.9% uptime</span>
+        </div>
+
+      </div>
+
+      <!-- ════════════ LADO DIREITO ════════════ -->
+      <div class="right-panel">
+
+        <div class="form-box">
+          <h1 class="form-title">Entrar</h1>
+          <p class="form-subtitle">Acesse sua conta para continuar</p>
+
+          <!-- Flash messages do Flask -->
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+              <div class="alert-custom alert alert-{{ 'danger' if category == 'error' else category }}">
+                <i class="bi bi-{{ 'x-circle' if category == 'error' else 'check-circle' }}"></i>
+                {{ message }}
+              </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <!-- Formulário -->
+          <form method="POST" action="{{ url_for('auth.login') }}" novalidate>
+            {{ form.hidden_tag() if form else '' }}
+
+            <!-- Email -->
+            <div class="input-group-custom">
+              <i class="bi bi-envelope input-icon"></i>
+              <input
+                type="email"
+                name="email"
+                class="form-input"
+                placeholder="Seu e-mail"
+                required
+                autocomplete="email"
+              >
+            </div>
+
+            <!-- Senha -->
+            <div class="input-group-custom">
+              <i class="bi bi-lock input-icon"></i>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="form-input"
+                placeholder="Sua senha"
+                required
+                autocomplete="current-password"
+              >
+              <button type="button" class="toggle-pw" onclick="togglePassword()">
+                <i class="bi bi-eye" id="pw-icon"></i>
+              </button>
+            </div>
+
+            <!-- Remember me + Esqueci -->
+            <div class="form-extras">
+              <label class="remember">
+                <input type="checkbox" name="remember">
+                Lembrar de mim
+              </label>
+              <a href="{{ url_for('auth.forget') }}" class="forgot-link">Esqueci a senha</a>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-submit">
+              Entrar no sistema
+              <i class="bi bi-arrow-right"></i>
+            </button>
+
+          </form>
+
+          <!-- Rodapé -->
+          <div class="form-footer">
+            Problemas para acessar?
+            <a href="mailto:contato@logsystemworks.com.br">Fale conosco</a>
+          </div>
+        </div>
+
+        <span class="version-tag">v1.0.0</span>
+      </div>
+
+    </div>
+
+<script>
+function togglePassword() {
+  const input = document.getElementById('password')
+  const icon  = document.getElementById('pw-icon')
+  if (input.type === 'password') {
+    input.type = 'text'
+    icon.className = 'bi bi-eye-slash'
+  } else {
+    input.type = 'password'
+    icon.className = 'bi bi-eye'
+  }
+}
+</script>
+</body>
+</html>

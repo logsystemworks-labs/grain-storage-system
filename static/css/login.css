@@ -1,0 +1,216 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+}
+
+/* ── Card central ── */
+.card {
+  width: 100%;
+  max-width: 360px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Logo ── */
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.logo-wrap img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.logo-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: -0.3px;
+}
+
+/* ── Título ── */
+.form-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 6px;
+  align-self: flex-start;
+}
+
+.form-sub {
+  font-size: 0.82rem;
+  color: #9ca3af;
+  font-weight: 400;
+  margin-bottom: 28px;
+  align-self: flex-start;
+}
+
+/* ── Inputs ── */
+.field {
+  width: 100%;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.field label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+
+.field input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #111;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field input::placeholder {
+  color: #d1d5db;
+}
+
+.field input:focus {
+  border-color: #3b9eff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 158, 255, 0.1);
+}
+
+/* ── Toggle senha ── */
+.pw-toggle {
+  position: absolute;
+  right: 12px;
+  bottom: 11px;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  line-height: 1;
+}
+
+.pw-toggle:hover {
+  color: #6b7280;
+}
+
+/* ── Remember + Forgot ── */
+.extras {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  margin-top: 2px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #2563eb;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.forgot {
+  font-size: 0.8rem;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+/* ── Botão ── */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: #1a56db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.1px;
+}
+
+.btn-login:hover {
+  background: #1648c0;
+}
+
+.btn-login:active {
+  transform: scale(0.99);
+}
+
+/* ── Flash messages ── */
+.flash {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flash.error {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.flash.success {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* ── Rodapé ── */
+.footer-text {
+  margin-top: 32px;
+  font-size: 0.72rem;
+  color: #d1d5db;
+  text-align: center;
+}

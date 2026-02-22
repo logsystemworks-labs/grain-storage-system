@@ -1,6 +1,4 @@
 # app/services/silos_services.py
-from logging import critical
-
 from app.models.storage_silo import Storage
 from app.db.extensions import db
 from flask import abort

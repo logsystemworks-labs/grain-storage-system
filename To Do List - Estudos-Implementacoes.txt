@@ -1,0 +1,105 @@
+TODO LIST Week Start Friday 20/02/2026 - Log System Works
+-------------------------------------------
+SEMANA 1 - Produto (foco total no sistema)
+-> Front-end das SaaS
+   - Tela de cadastro de silos
+   - Dashboard principal
+   - Tela de entrada/saída de grãos
+
+-> Carrinho e pacotes
+   - Página de pricing
+   - Carrinho à la carte (Customizar os pacotes)
+   - 3 pacotes fechados (Starter, Cooperativa, Enterprise)
+
+-> Fluxo completo
+   - Cadastro -> uso -> relatório PDF
+   - Testa tudo do início ao fim
+   - Corrige bugs
+
+
+---------------------------------------------
+SEMANA 2 - IA e dados (Expansão de serviços)
+-> Pandas + Numpy
+   - Baixa dados da CONAB e CEPEA
+   - Abre no Jupyter Notebook
+   - Entende a estrutura dos dados
+
+-> Prophet
+   - Instala e rodar exemplos
+   - Treinar com dados de preços de soja
+   - Plota gráfico de previsão
+   - É o mais fácil e mais útil agora
+
+-> Integração com IA no sistema
+   - Relatório automático via API OpenAI/Claude
+   - "Baseado nos seus dados, risco de deterioração..."
+   - Alerta por WhatsApp via Twilio (gratuito pra testar)
+
+-> Preparar pitch
+   - 5 slides só
+   - Problema, solução, demo, preço, próximo passo
+   - Pesquisa 10 cooperativas de Goiás/DF para abordar
+
+
+-------------------------------------------
+O QUE ESTUDAR EM PARALELO (30 MIN POR DIA)
+
+-> Fast.ai Lesson 1 e 2
+   - Fast.ai gratuito
+   - melhor curso de ML do mundo
+
+-> Kaggle Learn - Pandas
+   - kaggle.com/learn/pandas
+   - exercícios práticas com dado real
+
+
+-------------------------------------------------
+EXEMPLO DE PACOTES FECHADOS COM DESCONTO:
+-> Plano Starter
+   - Armazenagem até 5 silos
+   - Relatório Avançado
+   R$690 -> com desconto de R$580/mês (economia de R$110)
+
+-> Plano Cooperativa
+   - Armazenagem até 20 silos
+   - Relatório Avançado
+   - IA Alertas
+   - App Mobile
+   - R$2.730 -> com desconto R$2.300/mês(economia de R$ 530)
+
+-> Plano Enterprise
+   - Armazenagem ilimitada
+   - Todos os módulos
+   - Roteirização
+   - IoT Integration
+   - R$5.000+/mês (negociado)
+
+-----------------------------------------
+ANALISE DE MERCADO 20/02/2026
+
+-> MERCADO TOTAL
+   - +1.179 cooperativas agropecuárias no Brasil (2025)
+   - +1 milhão de cooperados
+   - 257 mil empregos diretos
+   - Presença em todos os estados
+
+-> FATURAMENTO
+   - R$438,3 bilhões em 2024 (+3,6% vs 2023)
+   - R$30,2 bilhões distribuídos em sobras (+47%)
+   - Respondem por +50% da produção nacional de grãos
+
+-> CRESCIMENTO
+   - Alta de 20% de 2021 p/ 2022
+   - Crescendo consideravelmente todo ano
+   - 2025 projeção de +11,6% na produção
+
+-> CONCENTRAÇÃO GEOGRÁFICA
+   - Minas Gerais       -> 198 cooperativas (maior número)
+   - São Paulo          -> 122 cooperativas
+   - Rio Grande do Sul  -> 95 cooperativas
+   - Paraná             -> maior gerador de empregos (107 mil)
+
+
+
+
+

@@ -1,5 +1,5 @@
 # app/__init__.py
-
+import os
 from flask import Flask
 from app.db.extensions import db, migrate
 from flask_cors import CORS
@@ -9,7 +9,9 @@ login_manager = LoginManager()
 
 """Factory pattern para criar app Flask"""
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__,
+                template_folder=os.path.join(os.path.dirname(__file__), '..', 'templates'),
+                static_folder=os.path.join(os.path.dirname(__file__), '..', 'static'))
 
     # Configurações
     app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:53616d75@localhost:5432/silos_db"
